@@ -1,3 +1,8 @@
+/*
+ * 
+ * Helper class for the war game example to hold the number and suit of a card.
+ * 
+ */
 
 public class Card {
 
