@@ -77,15 +77,19 @@ public class WarGame {
 			
 			//comparing value of the cards -> player w/ higher value takes both cards
 			if(removed_p1.value.number > removed_p2.value.number) {
+				
 				p1.add(new Card(removed_p1.value.number, removed_p1.value.suit));
 				p1.add(new Card(removed_p2.value.number, removed_p2.value.suit));
 				System.out.println("\nPLAYER 1 takes both cards.\n\nPlayer 1 deck now has: " + p1.length + " cards\nPlayer 2 deck now has: " + p2.length + " cards");
-			}
-			else if(removed_p1.value.number < removed_p2.value.number) {
+			
+			}else if(removed_p1.value.number < removed_p2.value.number) {
+				
 				p2.add(new Card(removed_p1.value.number, removed_p1.value.suit));
 				p2.add(new Card(removed_p2.value.number, removed_p2.value.suit));
 				System.out.println("\nPLAYER 2 takes both cards.\n\nPlayer 2 deck now has: " + p2.length + " cards\nPlayer 1 deck now has: " + p1.length + " cards");
+			
 			}else if(removed_p1.value.number == removed_p2.value.number) {
+				
 				//war --> draw 4 cards and play the fourth one
 				System.out.println("\n\nWar!\nPlayer 1 deck now has: " + p1.length + " cards");
 				System.out.println("\nPlayer 2 deck now has: " + p2.length + " cards");
@@ -114,38 +118,45 @@ public class WarGame {
 	public void war(LinkedList<Card> deck, LinkedList<Card> p1, LinkedList<Card> p2, ArrayList<Node<Card>> war_draw_p1, ArrayList<Node<Card>> war_draw_p2) {
 		
 		for (int i = 1; i <= 4; i++) {
-			Node<Card> removed_p1;
+			
 			System.out.println("\n\nWAR!\nPLAYER 1 || Press enter to draw card number " + i);
 			input.nextLine();
 			//storing drawn card to reuse
+			Node<Card> removed_p1;
 			removed_p1 = p1.remove();
 			System.out.println("" + removed_p1.value.number + " of " + removed_p1.value.suit + " played for PLAYER 1");
 			
 			//if while drawing cards for war a player finishes all his cards, he loses
 			if(p1.length == 0) {
+				
 				System.out.println("Player 1 finished his cards. Player 2 wins!! Game Over!");
 				//stop war and game
 				game_over = true;
 				return;
+			
 			}else {
 				war_draw_p1.add(removed_p1);
 			}
 			
 		}
+		
 		for (int i = 1; i <= 4; i++) {
-			Node<Card> removed_p2;
+			
 			System.out.println("\n\nWAR!\nPLAYER 2 || Press enter to draw card number " + i);
 			input.nextLine();
 			//storing drawn card to reuse
+			Node<Card> removed_p2;
 			removed_p2 = p2.remove();
 			System.out.println("" + removed_p2.value.number + " of " + removed_p2.value.suit + " played for PLAYER 2");
 			
 			//if while drawing cards for war a player finishes all his cards, he loses
 			if(p2.length == 0) {
+				
 				System.out.println("Player 2 finished his cards. Player 1 wins!! Game Over!");
 				//stop war and game
 				game_over = true;
 				return;
+			
 			}else {
 				war_draw_p2.add(removed_p2);
 			}
@@ -153,21 +164,27 @@ public class WarGame {
 		
 		//the last element in the war_draw lists is the last card drawn which is used for comparison
 		if(war_draw_p1.get(4).value.number > war_draw_p2.get(4).value.number) {
+			
 			//player 1 wins -> add all the cards drawn by both players (10 cards total added) to player 1 deck
 			war_draw_p2.forEach(card -> p1.add(new Card(card.value.number, card.value.suit)));
 			war_draw_p1.forEach(card -> p1.add(new Card(card.value.number, card.value.suit)));
 			System.out.println("\nPlayer 1 wins this war.\nPlayer 1 deck now has: " + p1.length + "\nPlayer 2 deck now has: " + p2.length + " cards");
 			return;
+		
 		}else if(war_draw_p1.get(4).value.number < war_draw_p2.get(4).value.number) {
+			
 			//player 2 wins -> add all the cards drawn by both players (10 cards total added) to player 2 deck
 			war_draw_p1.forEach(card -> p2.add(new Card(card.value.number, card.value.suit)));
 			war_draw_p2.forEach(card -> p2.add(new Card(card.value.number, card.value.suit)));
 			System.out.println("\nPlayer 2 wins this war.\nPlayer 2 deck now has: " + p2.length + "\nPlayer 1 deck now has: " + p1.length + " cards");
 			return;
+		
 		}else {
+			
 			//same value so another war -> recursion while saving all the past drawn cards
 			System.out.println("\nWAR AGAIN!!");
 			war(deck, p1, p2, war_draw_p1, war_draw_p2);
+			
 		}
 	}
 		
