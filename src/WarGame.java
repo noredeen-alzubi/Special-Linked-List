@@ -9,10 +9,20 @@ public class WarGame {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		//-------------------------setup-------------------------
 		LinkedList<Card> deck = new LinkedList<Card>();
 		LinkedList<Card> p1 = new LinkedList<Card>(), p2 = new LinkedList<Card>();
+		
 		WarGame game = new WarGame();
+		
+		game.setupGame(deck, p1, p2);
+		
+		game.game(deck, p1, p2);
+		
+	}
+	
+	public void setupGame(LinkedList<Card> deck, LinkedList<Card> p1, LinkedList<Card> p2) {
+		
+		
 		for (int i = 1; i < 14; i++) {
 			deck.add(new Card(i, "hearts"));
 			deck.add(new Card(i, "diamonds"));
@@ -20,18 +30,13 @@ public class WarGame {
 			deck.add(new Card(i, "clubs"));
 		}
 		
-		//shuffle a random value.number of times (4-9 times)
+		//shuffle a random number of times (4-9 times)
 		for(int i = 0; i < ((int)(Math.random()*6) + 4); i++) {
 			deck.shuffle();
 		}
 		//deal the cards
 		deck.split(p1, p2);
 		System.out.println(p1.length + " " + p2.length);
-		//-------------------------------------------------------
-		
-		
-		game.game(deck, p1, p2);
-		
 	}
 	
 	public void game(LinkedList<Card> deck, LinkedList<Card> p1, LinkedList<Card> p2) {
@@ -110,7 +115,7 @@ public class WarGame {
 		
 		for (int i = 1; i <= 4; i++) {
 			Node<Card> removed_p1;
-			System.out.println("\n\nWAR!\nPLAYER 1 || Press enter to draw card value.number " + i);
+			System.out.println("\n\nWAR!\nPLAYER 1 || Press enter to draw card number " + i);
 			input.nextLine();
 			//storing drawn card to reuse
 			removed_p1 = p1.remove();
@@ -129,7 +134,7 @@ public class WarGame {
 		}
 		for (int i = 1; i <= 4; i++) {
 			Node<Card> removed_p2;
-			System.out.println("\n\nWAR!\nPLAYER 2 || Press enter to draw card value.number " + i);
+			System.out.println("\n\nWAR!\nPLAYER 2 || Press enter to draw card number " + i);
 			input.nextLine();
 			//storing drawn card to reuse
 			removed_p2 = p2.remove();
