@@ -3,6 +3,7 @@ package SpecialLinkedList;
 
 public class LinkedList<E> {
 	
+	//we mark a sentinel node by declaring its value null
 	public Node<E> sentinel = new Node<E>(null, null, null);
 	public int length = 0; 
 	
@@ -60,18 +61,14 @@ public class LinkedList<E> {
 		//if left is bigger than right
 		if(shuffle_pos <= (length - 1) / 2) {
 			
-			//-
 			
 			//save the current node and what is after it because the order of the
 			//original nodes will be lost during shuffling.
 			Node<E> current = sentinel.next;
 			Node<E> next_current;
 			
-			
 			//looping through left side
 			for (int i = 0; i <= shuffle_pos; i++, current = next_current) {
-				
-				//-
 				
 				card_to_switch = current;
 	
@@ -83,13 +80,11 @@ public class LinkedList<E> {
 				for(int j = i; j < shuffle_pos + (i*2) + 1; j++, inner_current = inner_current.next); 
 				
 				
-				//-
-				
 				//Rearrange connections in the original position (left side)
 				card_to_switch.prev.next = card_to_switch.next;
 				card_to_switch.next.prev = card_to_switch.prev;
 				
-				//Keeping track of the surrounding nodes to the target poisiton
+				//Keeping track of the surrounding nodes to the target position
 				Node<E> target_temp_front = inner_current.next;
 				Node<E> target_temp_back = inner_current;
 				
@@ -113,9 +108,7 @@ public class LinkedList<E> {
 			
 			
 			//Exact same steps but just reversed. Going the other direction of the list
-			
 			Node<E> current = sentinel.prev;
-			
 			
 			Node<E> next_current;
 			
@@ -162,16 +155,20 @@ public class LinkedList<E> {
 		return count;
 	}
 	
-	public void split(LinkedList<E> p1, LinkedList<E> p2) {
+	//splits the list equally to two sub lists ll1 and ll2.
+	public void split(LinkedList<E> ll1, LinkedList<E> ll2) {
+		
 		Node<E> current = sentinel.next;
+		
+		//first half --> add to ll1, second half --> add to ll2
 		for (int i = 0; i < length && current.value != null; i++, current = current.next) {
 			if(i < length/2) {
-				p1.add(current.value);
+				ll1.add(current.value);
 				
 			}else {
 				if(current.value == null)
 					System.out.println("sentinel added");
-				p2.add(current.value);
+				ll2.add(current.value);
 			}
 			
 			current.prev.next = current.next;
