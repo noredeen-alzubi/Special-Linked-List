@@ -22,6 +22,9 @@ In summary, here is the algorithm:
 3. Repeat the steps above a random number of times (6-10 times)
 
 
+![presentation1](https://user-images.githubusercontent.com/30037359/50393055-3a6b3180-075c-11e9-95a3-81125a0829de.jpg)
+
+
 
 
 
