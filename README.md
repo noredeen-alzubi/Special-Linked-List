@@ -7,8 +7,9 @@ This is a normal doubly linked list with a modified sentinel node added. This se
 The sentinel is flipped so the circle structure can make sense but having either orientation would be fine. Its value is null so we can identify it from the rest of the nodes.
 
 Adding and removing from the list (or closed circle) is a bit tedious, but the many pointers create easy and convenient retrieval and access.
-
-![presentation1](https://user-images.githubusercontent.com/30037359/50381341-64095780-068d-11e9-9efa-080e683a2f15.png)
+<p align="center">
+<img alt="ppt" src="https://user-images.githubusercontent.com/30037359/50381341-64095780-068d-11e9-9efa-080e683a2f15.png">
+</p>
 
 ## The Shuffle Algorithm:
 This implementation was inspired by [a problem from Stanford's CS9 class](https://web.stanford.edu/class/cs9/sample_probs/ListShuffling.pdf).
@@ -21,9 +22,9 @@ In summary, here is the algorithm:
 2. perform the perfect shuffle by interleaving the two sides/halves.
 3. Repeat the steps above a random number of times (6-10 times)
 
-
-![presentation1](https://user-images.githubusercontent.com/30037359/50393055-3a6b3180-075c-11e9-95a3-81125a0829de.jpg)
-
+<p align="center">
+<img alt="ppt" src="https://user-images.githubusercontent.com/30037359/50393055-3a6b3180-075c-11e9-95a3-81125a0829de.jpg">
+</p>
 
 
 
